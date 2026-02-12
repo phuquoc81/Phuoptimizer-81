@@ -10,12 +10,13 @@ A quantum-powered puzzle and problem solver with advanced AI capabilities.
 - Real-time AI activity logging
 
 ### 📄 Document Search - PQN81 Calling Button
-- Upload and search documents for "PQN81 calling button" references
-- Best support for plain text files (.txt)
-- Basic text extraction for other formats (PDF, Word, RTF)
+- Upload and search plain text documents for "PQN81 calling button" references
+- Supports only .txt (plain text) files
 - Context-aware search results with position highlighting
 - Quantum-powered document analysis
 - Real-time search status and findings display
+
+**Note**: This is a lightweight browser-based application. Binary formats (PDF, Word, RTF) require specialized parsing libraries not included in this implementation.
 
 ### ⚛️ Quantum ZX Core
 - Live visualization of quantum particle systems
@@ -52,11 +53,11 @@ Simply open `index.html` in a modern web browser. No installation or dependencie
 ### Using the Document Search
 
 1. **Upload a document** by clicking the "Choose File" button
-2. **Select a document** (Text files recommended for best results)
+2. **Select a plain text file** (.txt format)
 3. **Click "Search for PQN81 Calling Button"** to analyze the document
 4. **View the results** showing all matches with context
 
-**Note**: Plain text files (.txt) provide the most reliable results. Binary formats (PDF, Word, RTF) use basic text extraction which may not work for all documents.
+**Important**: Only plain text files (.txt) are supported. Binary formats (PDF, Word, RTF) require specialized parsing libraries not included in this lightweight browser application.
 
 The search will find references to:
 - PQN81 (case-insensitive)

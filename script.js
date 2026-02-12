@@ -457,9 +457,9 @@ class PhuAI {
             `, 'info');
         };
 
-        // Note: This uses readAsText() for simple text extraction.
-        // For binary formats (PDF, Word), this provides basic text extraction
-        // but may not work reliably. Text files (.txt) are recommended for best results.
+        // Note: This application only supports plain text files using readAsText().
+        // Binary formats (PDF, Word, RTF) require specialized parsing libraries
+        // (like pdf.js or mammoth.js) which are not included to keep the app lightweight.
         reader.readAsText(file);
     }
 
@@ -482,6 +482,10 @@ class PhuAI {
         const searchTerms = ['PQN81', 'pqn81', 'PQN-81', 'calling button', 'call button'];
         const content = this.documentContent.toLowerCase();
         const originalContent = this.documentContent;
+        
+        // Position threshold for deduplicating overlapping matches
+        // Matches within 10 characters are considered the same location
+        const DUPLICATE_POSITION_THRESHOLD = 10;
         
         let findings = [];
         let foundPQN81 = false;
@@ -531,7 +535,7 @@ class PhuAI {
         // This filters out overlapping matches from different search terms
         // (e.g., 'PQN81' and 'pqn81' at the same position would create duplicates)
         findings = findings.filter((finding, index, self) => 
-            index === self.findIndex(f => Math.abs(f.position - finding.position) < 10)
+            index === self.findIndex(f => Math.abs(f.position - finding.position) < DUPLICATE_POSITION_THRESHOLD)
         );
 
         // Build results HTML
