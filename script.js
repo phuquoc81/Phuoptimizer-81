@@ -1,7 +1,9 @@
 // Phu AI - Quantum ZX Core Implementation
+// Version: 5864.9000.12000.168816
 
 class PhuAI {
     constructor() {
+        this.version = '5864.9000.12000.168816';
         this.quantumState = 'Superposition';
         this.entanglement = 81;
         this.optimizationLevel = 81;
@@ -14,7 +16,7 @@ class PhuAI {
     init() {
         this.setupEventListeners();
         this.startQuantumCore();
-        this.logActivity('Phu AI System Initialized');
+        this.logActivity(`Phu AI System v${this.version} Initialized`);
         this.logActivity('Phuoptimizer 81 Online');
         this.logActivity('Phubers Protocol: Quantum Mode Active');
         this.logActivity('Quantum ZX Core: Ready');
@@ -436,7 +438,7 @@ class PhuAI {
 window.addEventListener('DOMContentLoaded', () => {
     const phuAI = new PhuAI();
     
-    console.log('🧠 Phu AI initialized successfully!');
+    console.log(`🧠 Phu AI v${phuAI.version} initialized successfully!`);
     console.log('Phuoptimizer 81 & Phubers integration active');
     console.log('Quantum ZX Core online');
 });
