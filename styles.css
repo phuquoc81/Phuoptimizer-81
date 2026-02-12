@@ -242,6 +242,52 @@ select {
     font-size: 1em;
 }
 
+.file-input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    margin-bottom: 15px;
+    background: white;
+}
+
+.file-input:focus {
+    outline: none;
+    border-color: #2e3192;
+}
+
+.btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-primary:disabled:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.finding-item {
+    background: #f8f9fa;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border-left: 3px solid #1bffff;
+}
+
+.finding-item p {
+    margin: 5px 0;
+}
+
+.finding-item em {
+    color: #666;
+    font-size: 0.9em;
+}
+
+.document-search-section {
+    background: linear-gradient(135deg, rgba(46, 49, 146, 0.05) 0%, rgba(27, 255, 255, 0.05) 100%);
+}
+
 .status-box {
     background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
     color: white;
