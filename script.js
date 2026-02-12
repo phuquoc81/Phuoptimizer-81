@@ -487,6 +487,9 @@ class PhuAI {
         const DUPLICATE_POSITION_THRESHOLD = 10; // Matches within 10 chars are duplicates
         const CONTEXT_WINDOW_SIZE = 50; // Characters to show before/after match
         
+        // Note: This assumes standard ASCII/UTF-8 text where toLowerCase()
+        // doesn't change string length. Works for English text files.
+        
         let findings = [];
         let foundPQN81 = false;
         let foundCallingButton = false;
