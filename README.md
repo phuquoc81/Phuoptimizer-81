@@ -15,6 +15,14 @@ A quantum-powered puzzle and problem solver with advanced AI capabilities featur
 2. Enter a puzzle or problem in the text area
 3. Click "Solve with Phu AI" to get quantum-powered solutions
 
+### Commit Messages
+Use a short, clear summary in the imperative mood. If you follow a simple prefix, keep it consistent.
+
+Example commit messages:
+- `docs: add commit message guidance`
+- `fix: handle empty puzzle input`
+- `ui: refine solve button label`
+
 ### Example Queries
 - `What is 25 + 17?`
 - `Fibonacci sequence for n=10`
