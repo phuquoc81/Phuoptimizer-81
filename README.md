@@ -4,6 +4,7 @@
 
 A quantum-powered puzzle and problem solver with advanced AI capabilities featuring:
 - 🧠 **Phu AI** - Advanced puzzle solving engine
+- 📄 **Document Search** - PQN81 calling button finder for documents
 - ⚛️ **Quantum ZX Core** - Real-time quantum visualization
 - 🔮 **Future Prediction** - Quantum probability analysis
 - ⚙️ **Phuoptimizer 81** - Optimization control (levels 1-81)
@@ -12,8 +13,9 @@ A quantum-powered puzzle and problem solver with advanced AI capabilities featur
 
 ### Quick Start
 1. Open `index.html` in your web browser
-2. Enter a puzzle or problem in the text area
-3. Click "Solve with Phu AI" to get quantum-powered solutions
+2. **Search Documents**: Upload a document to search for PQN81 calling button references
+3. **Solve Puzzles**: Enter a puzzle or problem in the text area
+4. Click "Solve with Phu AI" to get quantum-powered solutions
 
 ### Example Queries
 - `What is 25 + 17?`

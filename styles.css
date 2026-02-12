@@ -248,8 +248,14 @@ select {
     border: 2px solid #ddd;
     border-radius: 5px;
     font-size: 1em;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     background: white;
+}
+
+.file-note {
+    margin: 5px 0 15px 0;
+    font-size: 0.9em;
+    color: #666;
 }
 
 .file-input:focus {

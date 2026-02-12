@@ -457,7 +457,9 @@ class PhuAI {
             `, 'info');
         };
 
-        // Read as text for .txt files, or as text for other formats (basic parsing)
+        // Note: This uses readAsText() for simple text extraction.
+        // For binary formats (PDF, Word), this provides basic text extraction
+        // but may not work reliably. Text files (.txt) are recommended for best results.
         reader.readAsText(file);
     }
 
@@ -526,6 +528,8 @@ class PhuAI {
         }
 
         // Remove duplicates based on position
+        // This filters out overlapping matches from different search terms
+        // (e.g., 'PQN81' and 'pqn81' at the same position would create duplicates)
         findings = findings.filter((finding, index, self) => 
             index === self.findIndex(f => Math.abs(f.position - finding.position) < 10)
         );
