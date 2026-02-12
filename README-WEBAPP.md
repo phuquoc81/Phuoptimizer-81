@@ -118,9 +118,12 @@ Predict the future of quantum computing
 Potential future features:
 - [ ] Save/load puzzle history
 - [ ] Export solutions as PDF
-- [ ] Multi-language support
+- [ ] Multi-language conversation and translation support
+- [ ] Advanced mathematics solver for complex problems
 - [ ] Advanced visualization modes
 - [ ] Mobile app version
+- [ ] Cloud mining webapp mode for distributed compute experiments
+- [ ] Optional payment collection with owner payout flow for hosted deployments
 - [ ] API integration for extended capabilities
 
 ## Support
