@@ -218,7 +218,7 @@ class PhuAI {
     }
 
     solveMath(input, operator) {
-        const numbers = input.match(/\d+\.?\d*/g);
+        const numbers = input.match(/-?\d+\.?\d*/g);
         if (numbers && numbers.length >= 2) {
             const a = parseFloat(numbers[0]);
             const b = parseFloat(numbers[1]);
@@ -235,6 +235,14 @@ class PhuAI {
                     result = a * b;
                     break;
                 case '/':
+                    if (b === 0) {
+                        return `
+                            <h3>❌ Error</h3>
+                            <p><strong>Cannot divide by zero</strong></p>
+                            <p>Division by zero is undefined in mathematics.</p>
+                            <p><strong>Phu AI Suggestion:</strong> Please check your input values.</p>
+                        `;
+                    }
                     result = a / b;
                     break;
             }
@@ -427,9 +435,6 @@ class PhuAI {
 // Initialize Phu AI when page loads
 window.addEventListener('DOMContentLoaded', () => {
     const phuAI = new PhuAI();
-    
-    // Make it globally accessible for debugging
-    window.phuAI = phuAI;
     
     console.log('🧠 Phu AI initialized successfully!');
     console.log('Phuoptimizer 81 & Phubers integration active');
