@@ -10,6 +10,12 @@ A quantum-powered puzzle and problem solver with advanced AI capabilities featur
 - 🔗 **Phubers Protocol** - Advanced quantum processing
 - 📺 **helloPhú YouTube** - Channel integration
 
+### Planned Capabilities
+- 🌐 Multi-language conversation and translation support
+- 🧮 Advanced mathematics and complex problem-solving
+- ☁️ Cloud mining webapp mode for distributed compute experiments
+- 💳 Optional payment collection with owner payout flow for hosted deployments
+
 ### Quick Start
 1. Open `index.html` in your web browser
 2. Enter a puzzle or problem in the text area
