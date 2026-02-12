@@ -11,6 +11,11 @@ A quantum-powered puzzle and problem solver with advanced AI capabilities featur
 - 📺 **helloPhú YouTube** - Channel integration
 
 ### Quick Start
+
+#### Live Demo
+Visit the live application at: **https://phuquoc81.github.io/Phuoptimizer-81/**
+
+#### Local Development
 1. Open `index.html` in your web browser
 2. Enter a puzzle or problem in the text area
 3. Click "Solve with Phu AI" to get quantum-powered solutions
@@ -22,6 +27,19 @@ A quantum-powered puzzle and problem solver with advanced AI capabilities featur
 - `Predict the future of quantum computing`
 
 For detailed documentation, see [README-WEBAPP.md](README-WEBAPP.md)
+
+## 🌐 GitHub Pages Deployment
+
+This project is automatically deployed to GitHub Pages using GitHub Actions. The deployment workflow:
+- Triggers on every push to the `main` branch
+- Can be manually triggered from the Actions tab
+- Deploys the static site (HTML, CSS, JavaScript) to GitHub Pages
+- Makes the application accessible at: https://phuquoc81.github.io/Phuoptimizer-81/
+
+To set up GitHub Pages for this repository:
+1. Go to repository Settings → Pages
+2. Under "Build and deployment", select "GitHub Actions" as the source
+3. The workflow will automatically deploy on the next push to `main`
 
 ---
 
