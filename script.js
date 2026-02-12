@@ -483,9 +483,9 @@ class PhuAI {
         const content = this.documentContent.toLowerCase();
         const originalContent = this.documentContent;
         
-        // Position threshold for deduplicating overlapping matches
-        // Matches within 10 characters are considered the same location
-        const DUPLICATE_POSITION_THRESHOLD = 10;
+        // Constants for search configuration
+        const DUPLICATE_POSITION_THRESHOLD = 10; // Matches within 10 chars are duplicates
+        const CONTEXT_WINDOW_SIZE = 50; // Characters to show before/after match
         
         let findings = [];
         let foundPQN81 = false;
@@ -497,8 +497,8 @@ class PhuAI {
             let index = content.indexOf(termLower);
             while (index !== -1) {
                 // Extract context around the finding
-                const start = Math.max(0, index - 50);
-                const end = Math.min(originalContent.length, index + term.length + 50);
+                const start = Math.max(0, index - CONTEXT_WINDOW_SIZE);
+                const end = Math.min(originalContent.length, index + term.length + CONTEXT_WINDOW_SIZE);
                 const context = originalContent.substring(start, end);
                 
                 findings.push({
@@ -531,12 +531,20 @@ class PhuAI {
             return;
         }
 
-        // Remove duplicates based on position
-        // This filters out overlapping matches from different search terms
-        // (e.g., 'PQN81' and 'pqn81' at the same position would create duplicates)
-        findings = findings.filter((finding, index, self) => 
-            index === self.findIndex(f => Math.abs(f.position - finding.position) < DUPLICATE_POSITION_THRESHOLD)
-        );
+        // Sort findings by position for proper deduplication
+        findings.sort((a, b) => a.position - b.position);
+        
+        // Remove duplicates: keep first finding and filter out any within threshold
+        const uniqueFindings = [];
+        for (const finding of findings) {
+            const isDuplicate = uniqueFindings.some(kept => 
+                Math.abs(kept.position - finding.position) < DUPLICATE_POSITION_THRESHOLD
+            );
+            if (!isDuplicate) {
+                uniqueFindings.push(finding);
+            }
+        }
+        findings = uniqueFindings;
 
         // Build results HTML
         let resultsHTML = `
