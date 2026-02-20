@@ -9,6 +9,15 @@ A quantum-powered puzzle and problem solver with advanced AI capabilities.
 - Quantum ZX Core technology for enhanced predictions
 - Real-time AI activity logging
 
+### 📄 Document Search - PQN81 Calling Button
+- Upload and search plain text documents for "PQN81 calling button" references
+- Supports only .txt (plain text) files
+- Context-aware search results with position highlighting
+- Quantum-powered document analysis
+- Real-time search status and findings display
+
+**Note**: This is a lightweight browser-based application. Binary formats (PDF, Word, RTF) require specialized parsing libraries not included in this implementation.
+
 ### ⚛️ Quantum ZX Core
 - Live visualization of quantum particle systems
 - Real-time state updates (Superposition, Entangled, Coherent, Optimized)
@@ -40,6 +49,29 @@ Solves various types of problems including:
 
 ### Opening the Application
 Simply open `index.html` in a modern web browser. No installation or dependencies required.
+
+### Using the Document Search
+
+1. **Upload a document** by clicking the "Choose File" button
+2. **Select a plain text file** (.txt format)
+3. **Click "Search for PQN81 Calling Button"** to analyze the document
+4. **View the results** showing all matches with context
+
+**Important**: Only plain text files (.txt) are supported. Binary formats (PDF, Word, RTF) require specialized parsing libraries not included in this lightweight browser application.
+
+The search will find references to:
+- PQN81 (case-insensitive)
+- PQN-81
+- Calling button
+- Call button
+
+#### Search Results Include:
+- Total number of matches found
+- Whether PQN81 was found
+- Whether calling button references were found
+- Context snippets showing where matches appear
+- Position information for each match
+- Quantum confidence metrics
 
 ### Using the Puzzle Solver
 

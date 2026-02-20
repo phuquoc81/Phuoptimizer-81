@@ -8,6 +8,8 @@ class PhuAI {
         this.phubersProtocol = 'quantum';
         this.quantumBoost = true;
         this.activityLog = [];
+        this.uploadedDocument = null;
+        this.documentContent = '';
         this.init();
     }
 
@@ -29,6 +31,16 @@ class PhuAI {
             if (e.key === 'Enter' && e.ctrlKey) {
                 this.solvePuzzle();
             }
+        });
+
+        // Document upload
+        document.getElementById('documentUpload').addEventListener('change', (e) => {
+            this.handleDocumentUpload(e);
+        });
+
+        // Search document button
+        document.getElementById('searchDocBtn').addEventListener('click', () => {
+            this.searchDocument();
         });
 
         // Optimization level slider
@@ -422,6 +434,167 @@ class PhuAI {
         }
 
         this.updateActivityLog();
+    }
+
+    handleDocumentUpload(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        this.uploadedDocument = file;
+        this.logActivity(`Document uploaded: ${file.name}`);
+        
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            this.documentContent = e.target.result;
+            document.getElementById('searchDocBtn').disabled = false;
+            this.showDocumentOutput(`
+                <h3>📄 Document Loaded</h3>
+                <p><strong>File:</strong> ${file.name}</p>
+                <p><strong>Size:</strong> ${(file.size / 1024).toFixed(2)} KB</p>
+                <p><strong>Type:</strong> ${file.type || 'text/plain'}</p>
+                <p><strong>Status:</strong> Ready to search for PQN81 calling button</p>
+                <p><em>Click "Search for PQN81 Calling Button" to begin analysis</em></p>
+            `, 'info');
+        };
+
+        // Note: This application only supports plain text files using readAsText().
+        // Binary formats (PDF, Word, RTF) require specialized parsing libraries
+        // (like pdf.js or mammoth.js) which are not included to keep the app lightweight.
+        reader.readAsText(file);
+    }
+
+    searchDocument() {
+        if (!this.documentContent) {
+            this.showDocumentOutput('Please upload a document first.', 'error');
+            return;
+        }
+
+        this.logActivity('Searching document for PQN81 calling button...');
+        this.showDocumentOutput('🔮 Phu AI is analyzing document with Quantum ZX Core...', 'processing');
+
+        // Simulate processing time
+        setTimeout(() => {
+            this.performDocumentSearch();
+        }, 1500);
+    }
+
+    performDocumentSearch() {
+        const searchTerms = ['PQN81', 'pqn81', 'PQN-81', 'calling button', 'call button'];
+        const content = this.documentContent.toLowerCase();
+        const originalContent = this.documentContent;
+        
+        // Constants for search configuration
+        const DUPLICATE_POSITION_THRESHOLD = 10; // Matches within 10 chars are duplicates
+        const CONTEXT_WINDOW_SIZE = 50; // Characters to show before/after match
+        
+        // Note: This assumes standard ASCII/UTF-8 text where toLowerCase()
+        // doesn't change string length. Works for English text files.
+        
+        let findings = [];
+        let foundPQN81 = false;
+        let foundCallingButton = false;
+        
+        // Search for each term
+        searchTerms.forEach(term => {
+            const termLower = term.toLowerCase();
+            let index = content.indexOf(termLower);
+            while (index !== -1) {
+                // Extract context around the finding
+                const start = Math.max(0, index - CONTEXT_WINDOW_SIZE);
+                const end = Math.min(originalContent.length, index + term.length + CONTEXT_WINDOW_SIZE);
+                const context = originalContent.substring(start, end);
+                
+                findings.push({
+                    term: term,
+                    position: index,
+                    context: context
+                });
+                
+                if (termLower.includes('pqn')) foundPQN81 = true;
+                if (termLower.includes('call')) foundCallingButton = true;
+                
+                index = content.indexOf(termLower, index + 1);
+            }
+        });
+
+        // Generate results
+        const fileName = this.uploadedDocument ? this.uploadedDocument.name : 'document';
+        
+        if (findings.length === 0) {
+            this.showDocumentOutput(`
+                <h3>🔍 Search Complete</h3>
+                <p><strong>Document:</strong> ${fileName}</p>
+                <p><strong>Search Terms:</strong> PQN81, calling button</p>
+                <p><strong>Results:</strong> No matches found</p>
+                <p><strong>Quantum Analysis:</strong> The document does not contain references to PQN81 calling button</p>
+                <p><strong>Phuoptimizer 81:</strong> Search completed at level ${this.optimizationLevel}</p>
+                <p><strong>Suggestion:</strong> Try uploading a different document or verify the search terms</p>
+            `, 'info');
+            this.logActivity('No matches found in document');
+            return;
+        }
+
+        // Sort findings by position for proper deduplication
+        findings.sort((a, b) => a.position - b.position);
+        
+        // Remove duplicates: keep first finding and filter out any within threshold
+        const uniqueFindings = [];
+        for (const finding of findings) {
+            const isDuplicate = uniqueFindings.some(kept => 
+                Math.abs(kept.position - finding.position) < DUPLICATE_POSITION_THRESHOLD
+            );
+            if (!isDuplicate) {
+                uniqueFindings.push(finding);
+            }
+        }
+        findings = uniqueFindings;
+
+        // Build results HTML
+        let resultsHTML = `
+            <h3>✅ Search Results Found!</h3>
+            <p><strong>Document:</strong> ${fileName}</p>
+            <p><strong>Total Matches:</strong> ${findings.length}</p>
+            <p><strong>PQN81 Found:</strong> ${foundPQN81 ? '✅ Yes' : '❌ No'}</p>
+            <p><strong>Calling Button Found:</strong> ${foundCallingButton ? '✅ Yes' : '❌ No'}</p>
+            <p><strong>Quantum Confidence:</strong> ${this.entanglement}%</p>
+            <p><strong>Phuoptimizer 81:</strong> Analysis complete at level ${this.optimizationLevel}</p>
+            <hr>
+            <h4>📌 Findings:</h4>
+        `;
+
+        findings.forEach((finding, index) => {
+            resultsHTML += `
+                <div class="finding-item">
+                    <p><strong>Match ${index + 1}:</strong> "${finding.term}" at position ${finding.position}</p>
+                    <p><em>Context:</em> ...${finding.context}...</p>
+                </div>
+            `;
+        });
+
+        resultsHTML += `
+            <hr>
+            <p><strong>Phubers Protocol:</strong> ${this.phubersProtocol.toUpperCase()} mode active</p>
+            <p><strong>Status:</strong> Document analysis complete</p>
+        `;
+
+        this.showDocumentOutput(resultsHTML, 'success');
+        this.logActivity(`Found ${findings.length} match(es) for PQN81 calling button`);
+    }
+
+    showDocumentOutput(content, type) {
+        const output = document.getElementById('documentOutput');
+        output.innerHTML = content;
+        output.classList.add('visible');
+        
+        if (type === 'error') {
+            output.style.borderLeftColor = '#dc3545';
+        } else if (type === 'success') {
+            output.style.borderLeftColor = '#28a745';
+        } else if (type === 'info') {
+            output.style.borderLeftColor = '#17a2b8';
+        } else {
+            output.style.borderLeftColor = '#2e3192';
+        }
     }
 
     updateActivityLog() {
