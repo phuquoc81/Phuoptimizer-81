@@ -11,10 +11,24 @@ A quantum-powered puzzle and problem solver with advanced AI capabilities featur
 - 🔗 **Phubers Protocol** - Advanced quantum processing
 - 📺 **helloPhú YouTube** - Channel integration
 
+### Planned Capabilities
+- 🌐 Multi-language conversation and translation support
+- 🧮 Advanced mathematics and complex problem-solving
+- ☁️ Cloud mining webapp mode for distributed compute experiments
+- 💳 Optional payment collection with owner payout flow for hosted deployments
+
 ### Quick Start
 1. Open `index.html` in your web browser
 2. Enter a puzzle or problem in the text area
 3. Click "Solve with Phu AI" to get quantum-powered solutions
+
+### Commit Messages
+Use a short, clear summary in the imperative mood. If you follow a simple prefix, keep it consistent.
+
+Example commit messages:
+- `docs: add commit message guidance`
+- `fix: handle empty puzzle input`
+- `ui: refine solve button label`
 
 ### Example Queries
 - `What is 25 + 17?`
